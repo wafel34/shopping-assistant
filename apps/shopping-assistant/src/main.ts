@@ -1,7 +1,12 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
+import { importProvidersFrom } from "@angular/core";
+import { ClientShellModule } from "@shopping-assistant/client-shell";
 
-bootstrapApplication(AppComponent, appConfig).catch((err) =>
+bootstrapApplication(AppComponent, {
+  providers: [
+    importProvidersFrom(ClientShellModule)
+  ]
+}).catch((err) =>
   console.error(err)
 );
