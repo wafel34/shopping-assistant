@@ -5,7 +5,7 @@ import { clientShellRoutes } from './lib.routes';
 
 console.log('client shell module imported')
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(clientShellRoutes)],
+  imports: [CommonModule, RouterModule.forRoot(clientShellRoutes)],
 })
 export class ClientShellModule {
 }
