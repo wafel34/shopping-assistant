@@ -6,7 +6,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 
 bootstrapApplication(AppComponent, {
   providers: [
-    importProvidersFrom(ClientShellModule), provideAnimationsAsync()
+    importProvidersFrom(ClientShellModule),
+    provideAnimationsAsync(),
   ]
 }).catch((err) =>
   console.error(err)

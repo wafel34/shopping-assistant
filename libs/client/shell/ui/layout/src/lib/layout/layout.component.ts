@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { collection, collectionData, Firestore } from "@angular/fire/firestore";
 
 @Component({
   selector: 'shopping-assistant-layout',
@@ -8,4 +9,11 @@ import { CommonModule } from '@angular/common';
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css',
 })
-export class LayoutComponent {}
+export class LayoutComponent {
+  firestore: Firestore = inject(Firestore);
+
+  constructor() {
+    const itemCollection = collection(this.firestore, 'test')
+    collectionData(itemCollection).subscribe(console.log)
+  }
+}
