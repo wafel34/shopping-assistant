@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { clientShellRoutes } from './lib.routes';
 import { initializeApp, provideFirebaseApp } from "@angular/fire/app";
-import { getAuth, provideAuth } from "@angular/fire/auth";
+import { connectAuthEmulator, getAuth, provideAuth } from "@angular/fire/auth";
 import { connectFirestoreEmulator, getFirestore, provideFirestore } from "@angular/fire/firestore";
 
 @NgModule({
@@ -19,7 +19,15 @@ import { connectFirestoreEmulator, getFirestore, provideFirestore } from "@angul
         "messagingSenderId": "495643362914",
         "measurementId": "G-QYE4QP2VW0"
       }))),
-    importProvidersFrom(provideAuth(() => getAuth())),
+    importProvidersFrom(provideAuth(() => {
+      const auth = getAuth();
+
+      if (isDevMode()) {
+        connectAuthEmulator(auth, 'http://localhost:9099', { disableWarnings: true });
+      }
+
+      return auth;
+    })),
     importProvidersFrom(provideFirestore(() => {
       const firestore = getFirestore();
 
