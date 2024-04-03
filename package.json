@@ -2,7 +2,10 @@
   "name": "@shopping-assistant/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "seed": "node firebase/db-seed.js",
+    "serve:seeded": "firebase emulators:exec \"npm run seed\" && npx nx serve shopping-assistant"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~17.1.0",
@@ -17,6 +20,7 @@
     "@angular/platform-browser-dynamic": "~17.1.0",
     "@angular/router": "~17.1.0",
     "@nx/angular": "17.3.0",
+    "firebase-admin": "^12.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"

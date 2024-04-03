@@ -13,7 +13,7 @@ export class LayoutComponent {
   firestore: Firestore = inject(Firestore);
 
   constructor() {
-    const itemCollection = collection(this.firestore, 'test')
+    const itemCollection = collection(this.firestore, 'lists')
     collectionData(itemCollection).subscribe(console.log)
   }
 }
